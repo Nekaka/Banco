@@ -2,13 +2,21 @@ CREATE DATABASE banco;
 
 USE banco;
 
+CREATE TABLE tipo_acceso(
+    id_acceso INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion_acceso VARCHAR(15)
+);
+
 CREATE TABLE cliente(
 	id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30),
     apellido VARCHAR(30),
     direccion VARCHAR(50),
     telefono VARCHAR(12),
-    correo_electronico VARCHAR(50)
+    correo_electronico VARCHAR(50),
+    pass VARCHAR(50),
+    id_acceso INT,
+    FOREIGN KEY (id_acceso) REFERENCES tipo_acceso (id_acceso)
 );
 
 CREATE TABLE sucursal(
@@ -23,8 +31,12 @@ CREATE TABLE empleado(
     nombre VARCHAR(20),
     apellido VARCHAR(20),
     cargo VARCHAR(20),
+    correo_electronico VARCHAR(50),
+    pass VARCHAR(50),
     fecha_contratacion DATE,
     id_sucursal INT,
+    id_acceso INT,
+    FOREIGN KEY (id_acceso) REFERENCES tipo_acceso (id_acceso),
     FOREIGN KEY (id_sucursal) REFERENCES sucursal (id_sucursal)
 );
 
@@ -79,3 +91,14 @@ CREATE TABLE tarjeta(
     FOREIGN KEY (id_tipo_tarjeta) REFERENCES tipo_tarjeta(id_tipo_tarjeta),
     FOREIGN KEY (id_cuenta) REFERENCES cuenta(id_cuenta)
 );
+
+-- Tipos de acceso
+INSERT INTO tipo_acceso VALUES(null, 'SuperAdmin');
+INSERT INTO tipo_acceso VALUES(null, 'Empleado');
+INSERT INTO tipo_acceso VALUES(null, 'Cliente');
+
+-- Sucursal
+INSERT INTO sucursal VALUES(null, 'Sucursal Rancagua', 'Rancagua', '+569133');
+
+-- Super Admin
+INSERT INTO empleado VALUES(null, 'Admin', 'Admin', 'Admin', 'admin@admin.com', 'admin', '2023-10-14', 1, 1);

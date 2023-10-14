@@ -22,7 +22,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Banco Peirito</a>
+                <a class="nav-link active" aria-current="page" href="/index">Banco Peirito</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
@@ -45,5 +45,46 @@
           </div>
         </div>
       </nav>
+
+      <div class=" d-flex justify-content-center align-items-center vh-100 " style="background-color: hsl(0, 0%, 90%); ">
+        <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 27rem">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <h2 class="text-center" style="color: black;">Crear cuenta</h2><br>
+              
+                <div class="form-group">
+                    <div class="row">
+                        <div>
+                            <b style="color: black;">Correo</b><br>
+                            <div class="input-group mt-1">
+                                <div class="input-group-text bg-info">
+                                    <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
+                                </div>
+                                <input type='email' class="form-control" name="correo" id="correo" placeholder="Ingrese su correo electronico" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <div class="row">
+                        <div>
+                            <b style="color: black;">Contraseña</b><br>
+                            <div class="input-group mt-1">
+                                <div class="input-group-text bg-info">
+                                    <i class="fa-solid fa-unlock" style="color: #ffffff;"></i>
+                                </div>   
+                                <input type='password' class="form-control" name="descripcion" id="descripcion" placeholder="***********" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>¿Ya tienes una cuenta? <a href="/login" class="text-decoration-none text-info fw-semibold">Iniciar sesión</a></div>
+                <button type="submit" class="btn btn-info text-black w-100 fw-semibold shadow-sm mt-3" style="border-radius: 20px; width: 70%;">
+                    Crear
+                </button>
+            </form>
+        </div>
+    </div>
   </body>
+  <script src="https://kit.fontawesome.com/ca048bf1d7.js" crossorigin="anonymous"></script>
 </html>
