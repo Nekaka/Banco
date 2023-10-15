@@ -31,6 +31,6 @@ router.get('/registro', (req, res)=>{
 
 const crud = require('./controllers/crud');
 
-router.post('/validacion', crud.validacion);
+router.post('/validacionEmpleado', crud.validacionEmpleado);
 
 module.exports = router;

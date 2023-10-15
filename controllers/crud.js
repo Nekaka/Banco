@@ -2,7 +2,7 @@ const router = require('../router');
 const { query } = require('../database/db');
 const conexion = require('../database/db');
 
-exports.validacion = (req, res)=>{
+exports.validacionEmpleado = (req, res)=>{
     const correo = req.body.correo;
     const pass = req.body.password;
 
@@ -31,7 +31,7 @@ exports.validacion = (req, res)=>{
                         alertIcon:'error',
                         showConfirmButton: true,
                         timer: false,
-                        ruta: ''
+                        ruta: 'login'
                     })
                 }
             }
