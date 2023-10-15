@@ -35,6 +35,10 @@ router.get('/loginEmpleado', (req, res)=>{
     res.render('loginEmpleado');
 })
 
+router.get('/infoRegistro', (req, res)=>{
+    res.render('infoRegistro');
+})
+
 // router.get('/', (req, res)=>{
 //     conexion.query('SELECT * FROM clientes', (error, results)=>{
 //         if(error){
