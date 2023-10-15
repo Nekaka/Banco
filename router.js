@@ -19,6 +19,22 @@ router.get('/registro', (req, res)=>{
     res.render('registro');
 })
 
+router.get('/vistaSuperAdmin', (req, res)=>{
+    res.render('vistaSuperAdmin');
+})
+
+router.get('/vistaCliente', (req, res)=>{
+    res.render('vistaCliente');
+})
+
+router.get('/vistaEmpleado', (req, res)=>{
+    res.render('vistaEmpleado');
+})
+
+router.get('/loginEmpleado', (req, res)=>{
+    res.render('loginEmpleado');
+})
+
 // router.get('/', (req, res)=>{
 //     conexion.query('SELECT * FROM clientes', (error, results)=>{
 //         if(error){
@@ -32,5 +48,6 @@ router.get('/registro', (req, res)=>{
 const crud = require('./controllers/crud');
 
 router.post('/validacionEmpleado', crud.validacionEmpleado);
+router.post('/validacionCliente', crud.validacionCliente);
 
 module.exports = router;
