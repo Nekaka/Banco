@@ -7,9 +7,91 @@
     <title>Vista SuperAdmin</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/vistaSuperAdmin">Banco Peirito</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Iniciar Sesión</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <br>
+    <h2>CRUD Clientes</h2>
+    <div class="container">
+        <a href="/registro" class="btn btn-primary mt-4"><i class="fa-solid fa-plus"></i></a>
+        <table class="table table-bordered table-striped text-center mt-4">
+            <thead>
+                <tr class="bg-primary text-white">
+                    <th scope="col">ID_Cliente</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo_electronico</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">ID_Acceso</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach((cliente)=> { %>
+                <tr>
+                    <td><%= cliente.id_cliente %></td>
+                    <td><%= cliente.nombre %></td>
+                    <td><%= cliente.apellido %></td>
+                    <td><%= cliente.direccion %></td>
+                    <td><%= cliente.telefono %></td>
+                    <td><%= cliente.correo_electronico %></td>
+                    <td><%= cliente.pass %></td>
+                    <td><%= cliente.id_acceso %></td>
+                    <td>
+                        <a href="/eliminarCliente/<%= cliente.id_cliente %>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                        <a href="/editarCliente/<%= cliente.id_cliente %>" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></i></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://kit.fontawesome.com/ca048bf1d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <% if(typeof alert !="undefined" ){ %>
+        <script>
+          Swal.fire({
+            title: '<%= alertTitle%>',
+            text: '<%= alertMessage%>',
+            icon: '<%= alertIcon%>',
+            showConfirmButton: <%= showConfirmButton%> ,
+            timer: <%= timer %>
+                }).then(() => {
+              window.location = '/<%= ruta%>'
+            })
+        </script>
+        <% } %>
   </body>
 </html>
