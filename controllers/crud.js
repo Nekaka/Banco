@@ -87,3 +87,60 @@ exports.validacionCliente = (req, res)=>{
         })
     }
 }
+
+exports.crearCliente = (req, res)=>{
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const direccion = req.body.direccion;
+    const telefono = req.body.telefono;
+    const correo = req.body.correo;
+    const pass = req.body.password;
+
+    conexion.query('INSERT INTO cliente SET ?', {nombre:nombre, apellido:apellido, direccion:direccion, telefono:telefono, correo_electronico:correo, pass:pass, id_acceso: 3}, (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('registro',{
+                alert:true,
+                alertTitle: 'Cliente registrado',
+                alertMessage: '!Se ha registrado un nuevo cliente!',
+                alertIcon:'success',
+                showConfirmButton: false,
+                timer: 1500,
+                ruta: 'vistaSuperAdmin'
+            })
+        }
+    })
+}
+
+exports.updateCliente = (req, res)=>{
+    const id_cliente = req.body.id_cliente;
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const direccion = req.body.direccion;
+    const telefono = req.body.telefono;
+    const correo = req.body.correo;
+    const pass = req.body.password;
+    const id_acceso= req.body.id_acceso;
+
+    console.log('Datos para la actualización:', {id_cliente, nombre, apellido, direccion, telefono, correo, pass, id_acceso});
+
+
+    conexion.query('UPDATE cliente SET ? WHERE id_cliente = ?', [{id_cliente:id_cliente, nombre:nombre, apellido:apellido, direccion:direccion, telefono:telefono, correo:correo, pass:pass, id_acceso:id_acceso}, id_cliente], (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            // console.log(id_cliente);
+            // res.render('editarCliente',{
+            //     alert:true,
+            //     alertTitle: 'Cliente editado',
+            //     alertMessage: '!Se ha editado el cliente!',
+            //     alertIcon:'success',
+            //     showConfirmButton: false,
+            //     timer: 1500,
+            //     ruta: 'vistaSuperAdmin'
+            // })
+            res.redirect('/vistaSuperAdmin');
+        }
+    })
+}

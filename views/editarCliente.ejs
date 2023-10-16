@@ -42,11 +42,12 @@
           </div>
         </div>
     </nav>
-    
+    <% if(client) { %>
     <div class=" d-flex justify-content-center align-items-center vh-100 " style="background-color: hsl(0, 0%, 90%); ">
         <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 27rem">
-            <form action="crearCliente" method="POST">
-                <h2 class="text-center" style="color: black;">Registrar cliente</h2><br>
+            <form action="updateCliente" method="POST">
+                <input type="number" id="id_cliente" name="id_cliente" value="<%= client.id_cliente %>" hidden="" required>
+                <h2 class="text-center" style="color: black;">Editar cliente</h2><br>
                 <div class="form-group">
                   <div class="row">
                       <div>
@@ -55,7 +56,7 @@
                               <div class="input-group-text bg-info">
                                   <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
                               </div>
-                              <input type='text' class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre" required>
+                              <input type='text' class="form-control" name="nombre" id="nombre" value="<%= client.nombre %>" placeholder="Ingrese el nombre" required>
                           </div>
                       </div>
                   </div>
@@ -68,7 +69,7 @@
                               <div class="input-group-text bg-info">
                                   <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
                               </div>
-                              <input type='text' class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido" required>
+                              <input type='text' class="form-control" name="apellido" id="apellido" value="<%= client.apellido %>" placeholder="Ingrese el apellido" required>
                           </div>
                       </div>
                   </div>
@@ -81,7 +82,7 @@
                               <div class="input-group-text bg-info">
                                   <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
                               </div>
-                              <input type='text' class="form-control" name="direccion" id="direccion" placeholder="Ingrese la direccion" required>
+                              <input type='text' class="form-control" name="direccion" id="direccion" value="<%= client.direccion %>" placeholder="Ingrese la direccion" required>
                           </div>
                       </div>
                   </div>
@@ -94,7 +95,7 @@
                               <div class="input-group-text bg-info">
                                   <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
                               </div>
-                              <input type='text' class="form-control" name="telefono" id="telefono" placeholder="Ingrese el numero de telefono" required>
+                              <input type='text' class="form-control" name="telefono" id="telefono" value="<%= client.telefono %>" placeholder="Ingrese el numero de telefono" required>
                           </div>
                       </div>
                   </div>
@@ -107,7 +108,7 @@
                                 <div class="input-group-text bg-info">
                                     <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
                                 </div>
-                                <input type='email' class="form-control" name="correo" id="correo" placeholder="Ingrese su correo electronico" required>
+                                <input type='email' class="form-control" name="correo" id="correo" value="<%= client.correo_electronico %>" placeholder="Ingrese su correo electronico" required>
                             </div>
                         </div>
                     </div>
@@ -120,18 +121,32 @@
                                 <div class="input-group-text bg-info">
                                     <i class="fa-solid fa-unlock" style="color: #ffffff;"></i>
                                 </div>   
-                                <input type='password' class="form-control" name="password" id="password" placeholder="***********" required>
+                                <input type='password' class="form-control" name="password" id="password" value="<%= client.pass %>" placeholder="***********" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <div class="row">
+                        <div>
+                            <b style="color: black;">Tipo de acceso</b><br>
+                            <div class="input-group mt-1">
+                                <div class="input-group-text bg-info">
+                                    <i class="fa-solid fa-unlock" style="color: #ffffff;"></i>
+                                </div>   
+                                <input type='number' class="form-control" name="id_acceso" id="id_acceso" value="<%= client.id_acceso %>" placeholder="Tipo de acceso" required>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-info text-black w-100 fw-semibold shadow-sm mt-3" style="border-radius: 20px; width: 70%;">
-                    Iniciar
+                    Editar
                 </button>
             </form>
         </div>
     </div>
+    <% } %>
     <script src="https://kit.fontawesome.com/ca048bf1d7.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
