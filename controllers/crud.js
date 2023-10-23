@@ -123,24 +123,20 @@ exports.updateCliente = (req, res)=>{
     const pass = req.body.password;
     const id_acceso= req.body.id_acceso;
 
-    console.log('Datos para la actualización:', {id_cliente, nombre, apellido, direccion, telefono, correo, pass, id_acceso});
-
-
-    conexion.query('UPDATE cliente SET ? WHERE id_cliente = ?', [{id_cliente:id_cliente, nombre:nombre, apellido:apellido, direccion:direccion, telefono:telefono, correo:correo, pass:pass, id_acceso:id_acceso}, id_cliente], (error, results)=>{
+    conexion.query('UPDATE cliente SET ? WHERE id_cliente = ?', [{id_cliente:id_cliente, nombre:nombre, apellido:apellido, direccion:direccion, telefono:telefono, correo_electronico:correo, pass:pass, id_acceso:id_acceso}, id_cliente], (error, results)=>{
         if(error){
             throw error;
         }else{
-            // console.log(id_cliente);
-            // res.render('editarCliente',{
-            //     alert:true,
-            //     alertTitle: 'Cliente editado',
-            //     alertMessage: '!Se ha editado el cliente!',
-            //     alertIcon:'success',
-            //     showConfirmButton: false,
-            //     timer: 1500,
-            //     ruta: 'vistaSuperAdmin'
-            // })
-            res.redirect('/vistaSuperAdmin');
+            res.render('editarCliente', {
+                client:results[0],
+                alert:true,
+                alertTitle: 'Cliente editado',
+                alertMessage: '!Se ha editado el cliente!',
+                alertIcon:'success',
+                showConfirmButton: false,
+                timer: 1500,
+                ruta: 'vistaSuperAdmin'
+            })
         }
     })
 }
